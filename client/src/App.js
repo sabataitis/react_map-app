@@ -9,6 +9,7 @@ const App = () => {
   const [showPopup, setShowPopup] = useState({});
   const [entryLocation, setEntryLocation] = useState(null);
   const [editStatus, setEditStatus] = useState(false);
+  const [render, setRender] = useState({});
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -20,8 +21,8 @@ const App = () => {
     setEditStatus(!editStatus);
   };
   const getEntries = async () => {
-    const logEntries = await listLogEntries();
-    setLogEntries(logEntries);
+    const newLogEntries = await listLogEntries();
+    setLogEntries(newLogEntries);
   };
   const showAddMarkerPopup = event => {
     const [longitude, latitude] = event.lngLat;
@@ -32,7 +33,7 @@ const App = () => {
   };
   useEffect(() => {
     getEntries();
-  }, [logEntries]);
+  }, [render]);
   return (
     <ReactMapGL
       {...viewport}
@@ -93,6 +94,7 @@ const App = () => {
                       [logEntry._id]: false
                     });
                     getEntries();
+                    setRender({ [logEntry._id]: false });
                   }}
                 >
                   Remove
@@ -123,6 +125,7 @@ const App = () => {
                     onClose={() => {
                       setEditStatus(false);
                       getEntries();
+                      setRender({ [logEntry._id]: ![logEntry._id] });
                     }}
                   />
                 </Popup>
@@ -138,18 +141,7 @@ const App = () => {
             longitude={entryLocation.longitude}
           >
             <div>
-              <svg
-                style={{
-                  width: ` ${7 * viewport.zoom}px`,
-                  height: ` ${7 * viewport.zoom}px`
-                }}
-                className="marker"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
+              <MarkerSvg viewport={viewport}/>
             </div>
           </Marker>
           <Popup

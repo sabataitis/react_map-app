@@ -1,6 +1,7 @@
 const { Router } = require('express');
 
 const LogModel = require('../models/LogModel');
+// const {ACCESS_KEY} = process.env;
 
 const router = Router();
 
@@ -20,6 +21,10 @@ router.get('/logs', async (req, res, next) => {
 
 router.post('/logs', async (req, res, next) => {
   try {
+    // if(req.get('X-ACCESS-KEY')!== ACCESS_KEY){
+    //   res.status(401);
+    //   throw new Error('yes but no');
+    // }
     const logEntry = new LogModel(req.body);
     const createdEntry = await logEntry.save();
     res.json(createdEntry);

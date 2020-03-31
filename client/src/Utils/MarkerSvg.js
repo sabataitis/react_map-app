@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from "./Marker.module.css"
 
 export const MarkerSvg = ({viewport}) => {
     return (
@@ -7,7 +8,7 @@ export const MarkerSvg = ({viewport}) => {
                   width: ` ${6 * viewport.zoom}px`,
                   height: ` ${6 * viewport.zoom}px`
                 }}
-                className="marker"
+                className={ classes.marker }
                 viewBox="0 0 24 24"
                 fill="none"
               >

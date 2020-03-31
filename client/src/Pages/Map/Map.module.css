@@ -1,0 +1,50 @@
+.popup {
+  display: flex;
+  justify-content: center;
+  border-radius: 2em;
+  max-width: 30vw;
+}
+.popupTextContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+.popupTextContent h3,
+.popupTextContent small,
+.popupTextContent p {
+  max-width: 200px;
+  word-wrap: break-word;
+}
+.popupButtons {
+  margin-top: auto;
+  margin-bottom: 1em;
+}
+.popupImageContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.popupImage img {
+  max-width: 200px;
+  padding: 0.5em 1em;
+}
+.entryForm label,
+.entryForm input,
+.entryForm textarea {
+  margin: 0.5em 0;
+  display: block;
+  width: 100%;
+}
+.btn {
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  box-sizing: border-box;
+  color: #ffffff;
+  background-color: lightsteelblue;
+  text-align: center;
+  font-size: 12pt;
+}

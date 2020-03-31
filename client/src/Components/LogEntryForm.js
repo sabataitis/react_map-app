@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { createLogEntry } from "../api";
+import classes from "./Form.module.css"
 export const LogEntryForm = ({ location, onClose }) => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export const LogEntryForm = ({ location, onClose }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="entryForm">
+    <form onSubmit={handleSubmit(onSubmit)} className={ classes.entryForm }>
       {error ? <h3>{error}</h3> : null}
       <label htmlFor="title">Where did you go?</label>
       <input name="title" type="text" required ref={register} />
@@ -27,7 +28,7 @@ export const LogEntryForm = ({ location, onClose }) => {
       <input name="image" type="text" ref={register} />
       <label htmlFor="visitDate">Visit Date</label>
       <input name="visitDate" type="date" required ref={register} />
-      <button className="btn" disabled={loading}>
+      <button className={ classes.btn } disabled={loading}>
         {loading ? "Loading..." :`+`}
       </button>
     </form>

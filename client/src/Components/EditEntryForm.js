@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { editLogEntry } from "../api";
+import classes from "./Form.module.css";
 export const EditLogEntryForm = ({ onClose, dataProp }) => {
   const { register, handleSubmit } = useForm();
   const [inputValues, setInputValues] = useState({
@@ -22,7 +23,7 @@ export const EditLogEntryForm = ({ onClose, dataProp }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="entryForm">
+    <form onSubmit={handleSubmit(onSubmit)} className={classes.entryForm}>
       {error ? <h3>{error}</h3> : null}
       <label htmlFor="title">Where did you go?</label>
       <input
@@ -65,13 +66,8 @@ export const EditLogEntryForm = ({ onClose, dataProp }) => {
         ref={register}
       />
       <label htmlFor="visitDate">Visit Date</label>
-      <input
-        name="visitDate"
-        type="date"
-        required
-        ref={register}
-      />
-      <button className="btn" disabled={loading}>
+      <input name="visitDate" type="date" required ref={register} />
+      <button className={classes.btn} disabled={loading}>
         {loading ? "Loading..." : `+`}
       </button>
     </form>

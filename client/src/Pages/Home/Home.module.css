@@ -1,0 +1,7 @@
+.home{
+    display: flex;
+    align-items: center;
+}
+.home h3{
+    padding-right: 0.5em;
+}

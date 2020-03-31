@@ -1,0 +1,19 @@
+
+.entryForm label,
+.entryForm input,
+.entryForm textarea {
+  margin: 0.5em 0;
+  display: block;
+  width: 100%;
+}
+.btn {
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  box-sizing: border-box;
+  color: #ffffff;
+  background-color: lightsteelblue;
+  text-align: center;
+  font-size: 12pt;
+}

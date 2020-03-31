@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "map-app-server",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "alias": [
+    "map-app-server"
+  ],
+  "env":{
+    "NODE_EVN": "production",
+    "PORT": "1337",
+    "DATABASE_URL": "@map-app-database-url",
+    "CORS_ORIGIN": "@cors-origin",
+    "ACCESS_KEY": "@map-app-access-key"
+  }
+
+}

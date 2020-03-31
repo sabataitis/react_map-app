@@ -20,6 +20,8 @@ export const LogEntryForm = ({ location, onClose }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={ classes.entryForm }>
       {error ? <h3>{error}</h3> : null}
+      <label htmlFor="access_key">ACCESS KEY</label>
+      <input type="password" name="accessKey" required ref={register}/>
       <label htmlFor="title">Where did you go?</label>
       <input name="title" type="text" required ref={register} />
       <label htmlFor="description">Describe your experience</label>

@@ -5,3 +5,8 @@
 .home h3{
     padding-right: 0.5em;
 }
+.logo{
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}

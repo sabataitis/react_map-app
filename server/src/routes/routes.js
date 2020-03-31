@@ -1,7 +1,8 @@
 const { Router } = require('express');
 
 const LogModel = require('../models/LogModel');
-// const {ACCESS_KEY} = process.env;
+
+const { ACCESS_KEY } = process.env;
 
 const router = Router();
 
@@ -21,10 +22,11 @@ router.get('/logs', async (req, res, next) => {
 
 router.post('/logs', async (req, res, next) => {
   try {
-    // if(req.get('X-ACCESS-KEY')!== ACCESS_KEY){
-    //   res.status(401);
-    //   throw new Error('yes but no');
-    // }
+    if (req.get('X-API-KEY') !== ACCESS_KEY) {
+      console.log('i am here');
+      res.status(401);
+      throw Error('You are not authorised');
+    }
     const logEntry = new LogModel(req.body);
     const createdEntry = await logEntry.save();
     res.json(createdEntry);
@@ -52,7 +54,10 @@ router.patch('/logs/:entryId', async (req, res, next) => {
       { _id: req.params.entryId },
       {
         $set: {
-          title: req.body.title, description: req.body.description, image: req.body.image, visitDate: req.body.visitDate,
+          title: req.body.title,
+          description: req.body.description,
+          image: req.body.image,
+          visitDate: req.body.visitDate,
         },
       },
     );
